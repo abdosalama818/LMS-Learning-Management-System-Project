@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\AdminInstructorController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\InfoController;
 use App\Http\Controllers\backend\InstractorController;
@@ -39,6 +40,14 @@ Route::middleware(['auth','verified','role:admin'])->prefix('admin')->name('admi
                 /*Slider routes start */
     Route::resource('info', InfoController::class);;
                 /*Slider routes end */
+                /*Instructor routes start */
+     Route::resource('instructor', AdminInstructorController::class);
+    Route::post('/update-status', [AdminInstructorController::class, 'updateStatus'])->name('instructor.status');
+    Route::get('/instructor-active-list', [AdminInstructorController::class, 'instructorActive'])->name('instructor.active');
+
+                /*Instructor routes end */
+
+
 
 
 
