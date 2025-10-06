@@ -4,15 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\InfoController;
 use App\Http\Controllers\backend\InstractorController;
 use App\Http\Controllers\backend\SubCategoryController;
 use App\Http\Controllers\backend\InstarctorProfileController;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
+use App\Http\Controllers\backend\SliderController;
+use App\Http\Controllers\frontend\FrontendController;
+use App\Models\Slider;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,10 +28,18 @@ Route::middleware(['auth','verified','role:admin'])->prefix('admin')->name('admi
     Route::patch('profile/store', [AdminController::class, 'updateProfile'])->name('profile.store');
     Route::post('password/update', [AdminController::class, 'updatePassword'])->name('passwordSetting');
 
-                /*category rotes start */
+                /*category routes start */
     Route::resource('category', CategoryController::class);
     Route::resource('subcategory', SubCategoryController::class);
-                /*category rotes end */
+                /*category routes end */
+
+                /*Slider routes start */
+    Route::resource('slider', SliderController::class);;
+                /*Slider routes end */
+                /*Slider routes start */
+    Route::resource('info', InfoController::class);;
+                /*Slider routes end */
+
 
 
 
@@ -71,5 +77,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+/* ************************************frontend Routes{home page} ****************************/
+Route::controller(FrontendController::class)->group(function(){
+    Route::get('/','home')->name('frontend.home');
+    Route::get('/cart','home')->name('cart');
+});
+
 
 require __DIR__.'/auth.php';

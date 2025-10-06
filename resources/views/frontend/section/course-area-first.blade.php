@@ -36,7 +36,7 @@
                                                 class="d-block">
 
                                                 <img class="card-img-top lazy" width="240" height="240"
-                                                    src="{{ asset($course->course_image) }}"
+                                                    src="{{ asset("uploads/" . $course->course_image) }}"
                                                     data-src="{{ asset($course->course_image) }}" alt="Card image cap">
 
                                             </a>

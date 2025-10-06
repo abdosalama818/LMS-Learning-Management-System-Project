@@ -43,7 +43,7 @@
                             <tr>
                                 <td>{{$index+1}}</td>
                                 <td>
-                                    <img src={{asset($item->image)}} width='120' height='120' style="border-radius: 60px" />
+                                    <img src={{asset("uploads/" . $item->image)}} width='120' height='120' style="border-radius: 60px" />
                                 </td>
                                 <td>{{$item->title}}</td>
                                 <td>{{ \Illuminate\Support\Str::limit($item->short_description, 80) }}</td>

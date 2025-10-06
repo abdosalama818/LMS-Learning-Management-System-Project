@@ -2,7 +2,7 @@
     <div class="hero-slider owl-action-styled">
 
         @foreach($all_sliders as $item)
-        <div class="hero-slider-item" style="background-image: url('{{ asset($item->image) }}');" >
+        <div class="hero-slider-item" style="background-image: url('{{ asset("uploads/" . $item->image) }}');" >
 
             <div class="container">
                 <div class="hero-content">

@@ -1,6 +1,18 @@
 @extends('backend.admin.master')
 
 @section('content')
+
+
+<h1>box 1 </h1>
+@if ($errors->any())
+  
+        @foreach ($errors->all() as $error)
+          <h1>{{ $error }}</h1>
+        @endforeach
+    
+@endif
+
+
     <div class="page-content">
         <!--breadcrumb-->
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
